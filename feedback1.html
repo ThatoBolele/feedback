@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width", intial scale="1.0"/>
+        <meta charset="utf-8">
+        <title>Major Cinemax</title>
+        <link rel="icon" href="Images/icon.png">
+        <link rel="stylesheet" href="style/style.css">
+        <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link href="fonts/Akshar/Akshar-VariableFont_wght.ttf" rel="font">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Akshar:wght@500&display=swap" rel="stylesheet">
+        <style>
+            .main>.feedback{
+                position: static;
+            }
+           form{
+               margin: auto;
+               width: 90%;
+               max-width: 600px;
+           }
+           .input-group{
+               margin-bottom: 3%;
+               position: relative;
+           }
+           .feedback>form>.input-group  input, textarea{
+               width: 100%;
+               padding: 10px;
+               outline: 0;
+               border: 1px solid white;
+               background: transparent;
+               font-size: 15px;
+           }
+           .feedback>form>.input-group label#lab{
+               height: 100%;
+               position: static;
+               left: 0;
+               top: 0;
+               padding: 10px;
+               cursor: text;
+           }
+           button,
+           input[type='submit']{
+            display: inline-block;
+            border: 1px solid black;
+            padding: 10px 28px;
+            font-size: 10px;
+            background: transparent;
+            cursor: pointer;
+            position: static;
+            bottom: 0;
+           }
+           button:hover,
+           input[type='submit']:hover{
+            border: 1px solid red;
+            background: red;
+            transition: 0.5s;
+           }
+        </style>
+    </head>
+    <body>
+       <div class="main">
+            <div class="navigation">
+                <a href="index.html"><img src="Images/LOGO.png" alt="Major Cinemax" title="Major Cinemax"></a>
+                <div id="heading">
+                <h1>MAJOR CINEMAX</h1>
+                <h6>Major Movies for Major People</h6>   
+                </div>
+                <div class="links">
+                    <div id="menu">
+                        <span class="material-symbols-outlined" onclick="hideMenu()">
+                        close
+                        </span>
+                        <ul>
+                            <li><a href="home.html">Home</a></li>
+                            <li>
+                                <a>Categories</a>
+                                <ul class="submenu">
+                                    <li><a href="action.html">Action</a></li>
+                                    <li><a href="comedy.html">Comedy</a></li>
+                                    <li><a href="horror.html">Horror</a></li>
+                                    <li><a href="romance.html">Romance</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="showing.html">In-Theater</a></li>
+                            <li><a href="coming-soon.html">Comming-Soon</a></li>
+                        </ul>
+                    </div>
+                    <span class="material-symbols-outlined" onclick="showMenu()">
+                        menu
+                        </span>
+                </div>
+                <a href="#" class="tickets">GET TICKETS</a>
+                <label for="txtsearch">Search :</label>
+                <input type="search">
+            </div> 
+            <script>
+                var menu = document.getElementById("menu")
+
+                function showMenu(){
+                    menu.style.display = "block";
+                }
+                function hideMenu(){
+                    menu.style.display = "none";
+                }
+            </script>
+                <div class="feedback">
+                    <form name="feedback" id="feedback" action="thankyou.html" method="post" onsubmit="return ValidateFormData()">
+                        <div class="input-group">
+                            <label id="lab">User Name</label>
+                            <input type="text" id="username" name="username" placeholder="Username" required="true" oninvalid="setCustomValidity('Please enter the username!!')" oninput="setCustomValidity('')" value="">
+                        </div>
+                        <div class="input-group">
+                            <label id="lab">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Email" required="true" oninvalid="setCustomValidity('Please enter the email!!')" oninput="setCustomValidity('')" value="">
+                        </div>
+                        <div class="input-group">
+                            <label style="font-size: 1.5em; text-decoration-line: underline;">Did you enjoy the website's experience</label><br>
+                            <label  for="reaction1">Fun and easy to use
+                                <input type="radio" id="reaction1" required name="reaction">
+                            </label>
+                            <label for="reaction2">Ok, usable
+                                <input type="radio" id="reaction2" required name="reaction">
+                            </label>
+                            <label for="reaction3">Horrible and difficult to use
+                                <input type="radio" id="reaction2" required name="reaction">
+                            </label>
+                            </div>
+                        <div class="input-group">
+                            <label id="lab">Message</label>
+                            <textarea id="message"rows="8"></textarea>
+                        </div>
+                        <button type="reset">RESET</button> 
+                        <!--button ><a href="Submitted.html">SUBMIT</a></button-->
+                        <input type="submit"  id="btnsubmit" name="btnsubmit" value="Submit"/>
+                    </form>
+
+                </div>
+        </div>      
+    </body>
+    <footer id="footer">
+       
+    </footer>
+    <script>
+        // this is to check oif all data was entered before submiting
+        function ValidateFormData() {
+            var username= document.querySelector("#username").value??"";
+            var email= document.querySelector("#email").value??"";
+            var message="";
+            if(username===""){
+                message="Please enter your username before proceeding";
+            }else if(email===""){
+                message="Please enter your email before proceeding";
+            }
+            //if data is missing show message box and return false to prevent form submission
+            if (message!==""){
+                alert(message);
+            }
+            //return value
+            return (message==="")?true:false;
+        }
+    </script>
+</html>
